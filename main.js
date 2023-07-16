@@ -21,12 +21,11 @@ window.addEventListener('load', () => {
         return response.json();
       })
       .then(function(data) {
-        // let mines = data.mines;
-        generateGrid(rows, cols);
+        generateGrid(rows, cols, data);
       });
   });
 
-  function generateGrid(rows, cols) {
+  function generateGrid(rows, cols, data) {
     let gridElement = document.createElement("div");
     gridElement.classList.add("grid");
 
@@ -40,6 +39,11 @@ window.addEventListener('load', () => {
         let colElement = document.createElement("div");
         colElement.classList.add("col");
         rowElement.appendChild(colElement);
+
+        // Vérifier s'il y a une mine à cette position : le data[i][j] cible la case
+        if (data[i][j] === 1) {
+          colElement.classList.add("mined");
+        }
       }
 
       gridElement.appendChild(rowElement);
@@ -48,5 +52,4 @@ window.addEventListener('load', () => {
     // Ajouter la grille générée à la page
     document.body.appendChild(gridElement);
   }
-
 });

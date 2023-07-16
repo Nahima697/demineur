@@ -18,8 +18,8 @@ form {
   }
   
   .col {
-    width: 14.28%; 
-    height: 100px;
+    width: 30%; 
+    height: 80px;
     border: 1px solid blue;
     color: white;
     font-size: 30px;
@@ -29,4 +29,8 @@ form {
   
 .row {
     display: flex;
+}
+
+.mined {
+    background-color: red;
 }

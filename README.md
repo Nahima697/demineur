@@ -12,3 +12,8 @@ J'ai pu récupérer les datas de l'api. Il faut maintenant que je puisse les uti
 
 ## Deuxième étape
 Il faut générer la grille souhaitée grâce à un appel à une api.
+# Fonction generateGrid
+ J'ai pu faire une fonction generateGrid pour afficher une grille en fonction des rows et des cols. Il me faut maintenant cibler les 1 qui représentent l'emplacement des mines.
+ # Fonction hasMines
+
+ Il faut que je parcoure les rows et les cols et voir si il y a un 1.
