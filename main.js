@@ -1,15 +1,18 @@
 "use strict";
 window.addEventListener('load', ()=> {
+
+    // je récupère les informations du formulaire et j'enregistre chaque valeur dans une constante
     const form = document.querySelector('form');
 
     form.addEventListener('submit', (e) => {
         e.preventDefault()
-        console.log('pseudo:', e.target.pseudo.value)
-        console.log('Col:', e.target.col.value)
-        console.log('Row:', e.target.row.value)
-        console.log('Mines:', e.target.mines.value)
+        const pseudo =  e.target.pseudo.value;
+        const col = e.target.col.value;
+        const row = e.target.row.value;
+        const mines = e.target.mines.value;
+        
     });
 
-
 })
+
 
