@@ -21,7 +21,9 @@ window.addEventListener('load', () => {
         return response.json();
       })
       .then(function(data) {
-        generateGrid(rows, cols, data);
+        const newData = adjoiningMines(rows, cols, data);
+        generateGrid(rows, cols, newData);
+        console.log(newData);
       });
   });
 
@@ -51,5 +53,55 @@ window.addEventListener('load', () => {
 
     // Ajouter la grille générée à la page
     document.body.appendChild(gridElement);
+    adjoiningMines (rows,cols,data);
   }
-});
+
+  function adjoiningMines(rows, cols, data) {
+    // Créer une nouvelle variable newData et copier les valeurs de data
+    let newData = data;
+  
+    for (let i = 0; i < rows; i++) {
+      for (let j = 0; j < cols; j++) {
+        if (data[i][j] === 1) {
+          // en haut
+          if (typeof newData[i - 1]?.[j] === "number") {
+            newData[i - 1][j]++;
+          }
+          // en haut à droite
+          if (typeof newData[i - 1]?.[j + 1] === "number") {
+            newData[i - 1][j + 1]++;
+          }
+          // à droite
+          if (typeof newData[i]?.[j + 1] === "number") {
+            newData[i][j + 1]++;
+          }
+          // en bas à droite
+          if (typeof newData[i + 1]?.[j + 1] === "number") {
+            newData[i + 1][j + 1]++;
+          }
+          // en bas
+          if (typeof newData[i + 1]?.[j] === "number") {
+            newData[i + 1][j]++;
+          }
+          // en bas à gauche
+          if (typeof newData[i + 1]?.[j - 1] === "number") {
+            newData[i + 1][j - 1]++;
+          }
+          // à gauche
+          if (typeof newData[i]?.[j - 1] === "number") {
+            newData[i][j - 1]++;
+          }
+          // en haut à gauche
+          if (typeof newData[i - 1]?.[j - 1] === "number") {
+            newData[i - 1][j - 1]++;
+          }
+        }
+      }
+    }
+  
+    return newData;
+  }
+   
+}
+    
+);
