@@ -14,9 +14,10 @@ J'ai pu récupérer les datas de l'api. Il faut maintenant que je puisse les uti
 Il faut générer la grille souhaitée grâce à un appel à une api.
 # Fonction generateGrid
  J'ai pu faire une fonction generateGrid pour afficher une grille en fonction des rows et des cols. Il me faut maintenant cibler les 1 qui représentent l'emplacement des mines.
+
  # Fonction hasMines
 
- Il faut que je parcoure les rows et les cols et voir si il y a un 1. J'ai pu cibler la case renvoyé par l'api qui est data[i][j] que je parcours ds une double boucle pour parcourir chaque case de chaque ligne. A partir de la, il suffit de vérifier si la case est égale à 1, si oui il y a une mine. Pour le moment, j'ai ajouté une classe mined qui met la case en rouge. 
+ Il faut que je parcoure les rows et les cols et voir si il y a un 1. J'ai pu cibler la case renvoyé par l'api qui est data[i][j] que je parcours ds une double boucle pour parcourir chaque case de chaque ligne. A partir de la, il suffit de vérifier si la case est égale à 1, si oui il y a une mine. Pour le moment, j'ai ajouté une classe mined qui met la case en rouge. Finalement, cela est inutile de faire une fonction pour ça, j'ai mis tout dans la function generateGrid.
 
  # Branche Adjacente
- J'ai mergé ma branche grille et j'en créer une nouvelle pour trouver l'algo qui déterminerai comment cibler les cases adjacentes les compter et faire apparaitre le chiffre sur la case.
+ J'ai mergé ma branche grille et j'en créer une nouvelle pour trouver l'algo qui déterminerai comment cibler les cases adjacentes les compter et faire apparaitre le chiffre sur la case. Je vais faire une fonction adjoiningMines. Il faut que dans cette fonction, je puisse déterminer si les cases qui sont adjacentes détiennent des mines et les compter.
