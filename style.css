@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+form {
+    margin: 0 auto;
+    text-align: center;
+ 
+}
+
+.grid {
+    height: max-content;
+    width: 50%;
+    background-color: grey;
+    margin:  0 auto;
+  }
+  
+  .col {
+    width: 30%; 
+    height: 80px;
+    border: 1px solid blue;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align:center;
+  }
+  
+.row {
+    display: flex;
+}
+
+.mined {
+    background-color: red;
+}
