@@ -24,12 +24,14 @@ window.addEventListener('load', () => {
         const newData = adjoiningMines(rows, cols, data);
         generateGrid(rows, cols, newData);
         console.log(newData);
+      
       });
   });
 
   function generateGrid(rows, cols, data) {
     let gridElement = document.createElement("div");
     gridElement.classList.add("grid");
+  
 
     // Création des lignes
     for (let i = 0; i < rows; i++) {
@@ -41,6 +43,7 @@ window.addEventListener('load', () => {
         let colElement = document.createElement("div");
         colElement.classList.add("col");
         rowElement.appendChild(colElement);
+     
 
         // Vérifier s'il y a une mine à cette position : le data[i][j] cible la case
         if (data[i][j] === 1) {
@@ -53,7 +56,9 @@ window.addEventListener('load', () => {
 
     // Ajouter la grille générée à la page
     document.body.appendChild(gridElement);
-    adjoiningMines (rows,cols,data);
+    adjoiningMines(rows, cols, data);
+  
+    gridElement.addEventListener('click', cellClicked);
   }
 
   function adjoiningMines(rows, cols, data) {
@@ -97,11 +102,19 @@ window.addEventListener('load', () => {
           }
         }
       }
-    }
-  
+    } 
     return newData;
   }
-   
-}
-    
-);
+
+  function cellClicked (e) {
+    let cell = e.target;
+    if(e.button === 0) {
+      console.log('click gauche');
+    }
+    if(e.button === 2) {
+      console.log('click droit');
+    }
+    console.log("Vous m'avez cliqué !");
+    console.log(cell);
+  }
+});

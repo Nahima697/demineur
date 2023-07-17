@@ -25,3 +25,4 @@ Il faut générer la grille souhaitée grâce à un appel à une api.
 
 
 ## Gérer les intéractions avec le joueurs
+Ici je dois gérer les intéractions avec l'utilisateur. Lorsqu'il clique sur une case, celle-ci doit découvrir le chiffre qui indique le nombre de mines adjacentes.
