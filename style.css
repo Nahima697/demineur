@@ -1,39 +1,37 @@
 * {
-    margin: 0;
-    padding: 0;
+    
     box-sizing: border-box;
-}
+  }
 
-form {
+  form {
     margin: 0 auto;
     text-align: center;
- 
-}
-
-.grid {
-    height: max-content;
-    width: 50%;
-    background-color: grey;
-    margin:  0 auto;
   }
-  
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    gap: 2px;
+    margin: 0 auto;
+    background-color: grey;
+  }
+
   .col {
-    width: 30%; 
-    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
     border: 1px solid blue;
     color: white;
     font-size: 30px;
     font-weight: bold;
-    text-align:center;
+    height: 50px;
   }
-  
-.row {
-    display: flex;
-}
 
-.mined {
+  .mined {
     background-color: red;
-}
-.adjacent {
-    background-color: green;
-}
+  }
+
+  .invisible {
+    visibility: hidden;
+  }
