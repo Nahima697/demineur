@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
 
   const form = document.querySelector('form');
   let newData;
-  let gridElement; // Declare gridElement globally
+  let gridElement; 
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -41,10 +41,10 @@ window.addEventListener('load', () => {
         let colElement = document.createElement("div");
         colElement.classList.add("col");
 
-        if (data[i][j] === 1) {
+        if (newData[i][j].isMined === true) {
           colElement.innerHTML = '<img src="image/bombe.png" width="50" height ="50" alt="Bombe">';
         } else {
-          colElement.innerText = newData[i][j];
+          colElement.innerText = newData[i][j].value;
         }
 
         rowElement.appendChild(colElement);
@@ -59,52 +59,35 @@ window.addEventListener('load', () => {
 
   function adjoiningMines(rows, cols, data) {
     let newData = JSON.parse(JSON.stringify(data));
-  
+   
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < cols; j++) {
+        newData[i][j] = {
+          value: data[i][j],
+          isMined: false
+        };//ici je défini les attributs de newData, la value avant incrémentation et isMined par défaut à false
+  
         if (data[i][j] === 1) {
-         
-          continue;// permet de ne pas incrémenter les cases qui ont une bombe
+          newData[i][j].isMined = true;
+          continue; // si data === 1 l'attribut passe à true et je skip pour ne pas mettre les bombes en incrémentation
         }
   
-        // en haut
-        if (typeof newData[i - 1]?.[j] === "number" && newData[i - 1][j] === 1) {
-          newData[i][j]++;
-        }
+        // Je vérifie les  cellules adjacentes à la case actuelle (i, j) en bouclant sur les lignes et colonnes adjacentes
+        for (let x = -1; x <= 1; x++) {// on vérifie les lignes de -1 à +1
+          for (let y = -1; y <= 1; y++) {//on vérifie les colonnes de -1 à +
+            if (x === 0 && y === 0) {
+              // j'ignore la cellule actuelle
+              continue;
+            }
   
-        // en haut à droite
-        if (typeof newData[i - 1]?.[j + 1] === "number" && newData[i - 1][j + 1] === 1) {
-          newData[i][j]++;
-        }
+            const newRow = i + x; // je créer une variable qui stocke les coordonnées de la ligne donc i +1 ou i+0 ou i-1
+            const newCol = j + y; // de même pour les colonnes
   
-        // à droite
-        if (typeof newData[i]?.[j + 1] === "number" && newData[i][j + 1] === 1) {
-          newData[i][j]++;
-        }
-  
-        // en bas à droite
-        if (typeof newData[i + 1]?.[j + 1] === "number" && newData[i + 1][j + 1] === 1) {
-          newData[i][j]++;
-        }
-  
-        // en bas
-        if (typeof newData[i + 1]?.[j] === "number" && newData[i + 1][j] === 1) {
-          newData[i][j]++;
-        }
-  
-        // en bas à gauche
-        if (typeof newData[i + 1]?.[j - 1] === "number" && newData[i + 1][j - 1] === 1) {
-          newData[i][j]++;
-        }
-            
-        // à gauche
-        if (typeof newData[i]?.[j - 1] === "number" && newData[i][j - 1] === 1) {
-          newData[i][j]++;
-        }
-  
-        // en haut à gauche
-        if (typeof newData[i - 1]?.[j - 1] === "number" && newData[i - 1][j - 1] === 1) {
-          newData[i][j]++;
+            if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols && data[newRow][newCol] === 1) {
+              // je vérifie si ob reste bien ds la grille c'est à dire que la  nouvelle ligne ne peut pas dépasser la taille de la ligne et etre inférieur à 0
+              newData[i][j].value++; // j'incrémente de 1 la case adjacente
+            }
+          }
         }
       }
     }
