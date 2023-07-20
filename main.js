@@ -74,13 +74,13 @@ window.addEventListener('load', () => {
   
         // Je vérifie les  cellules adjacentes à la case actuelle (i, j) en bouclant sur les lignes et colonnes adjacentes
         for (let x = -1; x <= 1; x++) {// on vérifie les lignes de -1 à +1
-          for (let y = -1; y <= 1; y++) {//on vérifie les colonnes de -1 à +
+          for (let y = -1; y <= 1; y++) {//on vérifie les colonnes de -1 à +1
             if (x === 0 && y === 0) {
               // j'ignore la cellule actuelle
               continue;
             }
   
-            const newRow = i + x; // je créer une variable qui stocke les coordonnées de la ligne donc i +1 ou i+0 ou i-1
+            const newRow = i + x; // je créé une variable qui stocke les coordonnées de la ligne donc i +1 ou i+0 ou i-1
             const newCol = j + y; // de même pour les colonnes
   
             if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols && data[newRow][newCol] === 1) {
