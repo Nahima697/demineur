@@ -32,22 +32,27 @@ window.addEventListener('load', () => {
     gridElement.classList.add("grid");
 
     // Création des lignes
-    for (let i = 0; i < rows; i++) {
+    for (let rowIndex = 0; rowIndex < rows; i++) {
       let rowElement = document.createElement("div");
       rowElement.classList.add("row");
 
       // Création des colonnes de chaque ligne
-      for (let j = 0; j < cols; j++) {
-        let colElement = document.createElement("div");
-        colElement.classList.add("col");
+      for (let colIndex = 0; colIndex < cols; j++) {
+        let divElement = document.createElement("div");
+        divElement.classList.add(
+          "cell",
+          "cell_hidden",
+          `celll-row${rowIndex}-col-${colIndex}`);
+          divElement.dataset.rowIndex=rowIndex;
+          divElement.dataset.colIndex=colIndex;
 
-        if (newData[i][j].isMined === true) {
-          colElement.innerHTML = '<img src="image/bombe.png" width="50" height ="50" alt="Bombe">';
+        if (newData[rowIndex][colIndex].isMined === true) {
+          divElement.innerHTML = '<img src="image/bombe.png" width="50" height ="50" alt="Bombe">';
         } else {
-          colElement.innerText = newData[i][j].value;
+          divElement.innerText = newData[i][j].value;
         }
 
-        rowElement.appendChild(colElement);
+        rowElement.appendChild(divElementElement);
       }
 
       gridElement.appendChild(rowElement);
@@ -84,7 +89,7 @@ window.addEventListener('load', () => {
             const newCol = j + y; // de même pour les colonnes
   
             if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols && data[newRow][newCol] === 1) {
-              // je vérifie si ob reste bien ds la grille c'est à dire que la  nouvelle ligne ne peut pas dépasser la taille de la ligne et etre inférieur à 0
+              // je vérifie si on reste bien ds la grille c'est à dire que la  nouvelle ligne ne peut pas dépasser la taille de la ligne et etre inférieur à 0
               newData[i][j].value++; // j'incrémente de 1 la case adjacente
             }
           }
