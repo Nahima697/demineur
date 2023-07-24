@@ -11,6 +11,7 @@ window.addEventListener('load', () => {
     const cols = e.target.cols.value;
     const rows = e.target.rows.value;
     const mines = e.target.mines.value;
+    const pseudo = e.target.pseudo.value;
 
     let url = `https://minesweeper.js.apprendre-est.fun/generate_grid.php?rows=${rows}&cols=${cols}&mines=${mines}`;
     fetch(url)
@@ -23,7 +24,12 @@ window.addEventListener('load', () => {
       .then(function(data) {
         newData = adjoiningMines(rows, cols, data); 
         gridElement = generateGrid(rows, cols, newData);
-        document.body.appendChild(gridElement);
+        document.querySelector('.choiceGame').classList.add('disabled');
+        document.querySelector('.welcomePseudo').textContent="A toi de jouer "+ pseudo;
+        document.querySelector('.game').classList.remove('disabled');
+        const game = document.querySelector('.game');
+        game.appendChild(gridElement);
+        
       });
   });
 
@@ -32,31 +38,33 @@ window.addEventListener('load', () => {
     gridElement.classList.add("grid");
 
     // Création des lignes
-    for (let rowIndex = 0; rowIndex < rows; i++) {
+    for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
       let rowElement = document.createElement("div");
       rowElement.classList.add("row");
 
       // Création des colonnes de chaque ligne
-      for (let colIndex = 0; colIndex < cols; j++) {
+      for (let colIndex = 0; colIndex < cols; colIndex++) {
         let divElement = document.createElement("div");
         divElement.classList.add(
           "cell",
           "cell_hidden",
-          `celll-row${rowIndex}-col-${colIndex}`);
+          `cell-row${rowIndex}-col-${colIndex}`);
           divElement.dataset.rowIndex=rowIndex;
           divElement.dataset.colIndex=colIndex;
 
-        if (newData[rowIndex][colIndex].isMined === true) {
-          divElement.innerHTML = '<img src="image/bombe.png" width="50" height ="50" alt="Bombe">';
-        } else {
-          divElement.innerText = newData[i][j].value;
-        }
+        // if (newData[rowIndex][colIndex].isMined === true) {
+        //   divElement.innerHTML = '<img src="image/bombe.png" width="50" height ="50" alt="Bombe">';
+        // } else {
+        //   divElement.innerText = newData[rowIndex][colIndex].value;
+        // }
 
-        rowElement.appendChild(divElementElement);
+        rowElement.appendChild(divElement);
       }
-
+    
       gridElement.appendChild(rowElement);
+      
     }
+   
 
     gridElement.addEventListener('click', (e) => cellClicked(e, newData));
     return gridElement;

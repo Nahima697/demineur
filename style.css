@@ -1,6 +1,14 @@
-* {
-    
+:root{
+  --color-blue: #39b1c6;
+  --color-dblue:#277986;
+  --color-lblue:#f0f9ee;
+}
+
+
+body {
+    margin: 0;
     box-sizing: border-box;
+    background-color: var(--color-dblue);
   }
 
   form {
@@ -8,30 +16,34 @@
     text-align: center;
   }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(var(--cols), 1fr);
-    gap: 2px;
-    margin: 0 auto;
-    background-color: grey;
+  h1, h2 {
+    color: white;
   }
-
-  .col {
+  .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #ddd;
-    border: 1px solid blue;
-    color: white;
-    font-size: 30px;
-    font-weight: bold;
-    height: 50px;
   }
 
-  .mined {
-    background-color: red;
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+  width: 620px;
+  }
+  .disabled {
+    display: none;
+  }
+  .cell {
+    height:50px;
+    width: 50px;
+    border: 3px solid var(--color-lblue);
+    margin:3px;
+    background-color: var(--color-dblue);
+   border-radius: 10px;
   }
 
-  .invisible {
-    visibility: hidden;
-  }
+ .cell:hover {
+  background-color: var(--color-lblue);
+  cursor: pointer;
+ }
