@@ -31,4 +31,7 @@ Il faut générer la grille souhaitée grâce à un appel à une api.
 
 
 ## Gérer les intéractions avec le joueurs
-Ici je dois gérer les intéractions avec l'utilisateur. Lorsqu'il clique sur une case, celle-ci doit découvrir le chiffre qui indique le nombre de mines adjacentes.
+Ici je dois gérer les intéractions avec l'utilisateur. Lorsqu'il clique sur une case, celle-ci doit découvrir le chiffre qui indique le nombre de mines adjacentes. Au départ, j'étais partie sur l'attribution d'une classe hidden sur la cellule qui devait caché la data et faire un remove au click, mais je me suis rendu comptre que le hiddent que ce soit display:none ou visibility hidden masquait la grille. Du coup, j'ai fais l'inverse. Je génère la grille sans data et je l'injecte au click.
+
+### l'Explosions des cases avec aucune mines adjacentes.
+Dans la règle du démineur quand on clique sur une case 0, les autres cases zéro sont découvertes. Il faut donc gérer cela.

@@ -24,10 +24,11 @@ window.addEventListener('load', () => {
       .then(function(data) {
         newData = adjoiningMines(rows, cols, data); 
         gridElement = generateGrid(rows, cols, newData);
+
         document.querySelector('.choiceGame').classList.add('disabled');
         document.querySelector('.welcomePseudo').textContent="A toi de jouer "+ pseudo;
         document.querySelector('.game').classList.remove('disabled');
-        const game = document.querySelector('.game');
+         const game = document.querySelector('.game');
         game.appendChild(gridElement);
         
       });
@@ -47,16 +48,14 @@ window.addEventListener('load', () => {
         let divElement = document.createElement("div");
         divElement.classList.add(
           "cell",
-          "cell_hidden",
-          `cell-row${rowIndex}-col-${colIndex}`);
-          divElement.dataset.rowIndex=rowIndex;
-          divElement.dataset.colIndex=colIndex;
-
-        // if (newData[rowIndex][colIndex].isMined === true) {
-        //   divElement.innerHTML = '<img src="image/bombe.png" width="50" height ="50" alt="Bombe">';
-        // } else {
-        //   divElement.innerText = newData[rowIndex][colIndex].value;
-        // }
+          `cell-row-${rowIndex}-col-${colIndex}`);
+        if (newData[rowIndex][colIndex].isMined === true) {
+          divElement.dataset.value = 'isMined';
+        } else {
+          divElement.dataset.value = newData[rowIndex][colIndex].value;
+          
+         
+        }
 
         rowElement.appendChild(divElement);
       }
@@ -65,8 +64,9 @@ window.addEventListener('load', () => {
       
     }
    
-
-    gridElement.addEventListener('click', (e) => cellClicked(e, newData));
+    gridElement.addEventListener('click', (e) =>  cellClicked(e, newData));
+    gridElement.addEventListener('contextmenu', (e) => {
+      e.preventDefault()});
     return gridElement;
   }
 
@@ -116,14 +116,15 @@ window.addEventListener('load', () => {
 
   function cellClicked(e, data) {
     let cell = e.target;
-    console.log(cell);
-
     if (e.button === 0) {
-      const row = cell.parentNode.dataset.row;
-      const col = cell.dataset.col;
-      console.log(row, col);
-      cell.classList.remove('invisible');
-      console.log('Click gauche');
+      cell.classList.remove('hidden');
+      cell.innerHTML = cell.dataset.value;
+      if(cell.isMined === false){
+        cell.textContent = dataset.value;
+      }
+      else{
+       cell.classList.add ('boum');
+      }
     }
     if (e.button === 2) {
       console.log('Click droit = drapeau');

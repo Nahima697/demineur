@@ -29,7 +29,7 @@ body {
   .grid {
     display: flex;
     flex-wrap: wrap;
-  width: 620px;
+    width: 620px;
   }
   .disabled {
     display: none;
@@ -40,10 +40,26 @@ body {
     border: 3px solid var(--color-lblue);
     margin:3px;
     background-color: var(--color-dblue);
-   border-radius: 10px;
+    border-radius: 10px;
+    color : #f0f9ee;
+    font-weight: bold;
+    font-size: 35px;
+    display: flex;
+    justify-content : center;
+    align-items : center;
+    text-align: center;
+  
   }
+
+  
 
  .cell:hover {
   background-color: var(--color-lblue);
   cursor: pointer;
+ }
+
+ .boum {
+  background-image: url('image/bombe.png');
+  background-repeat: no-repeat;
+  background-size: cover;
  }
