@@ -1,6 +1,14 @@
-* {
-    
+:root{
+  --color-blue: #39b1c6;
+  --color-dblue:#277986;
+  --color-lblue:#f0f9ee;
+}
+
+
+body {
+    margin: 0;
     box-sizing: border-box;
+    background-color: var(--color-dblue);
   }
 
   form {
@@ -8,30 +16,62 @@
     text-align: center;
   }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(var(--cols), 1fr);
-    gap: 2px;
-    margin: 0 auto;
-    background-color: grey;
+  h1, h2 {
+    color: white;
   }
-
-  .col {
+  .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #ddd;
-    border: 1px solid blue;
-    color: white;
-    font-size: 30px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(30px, 1fr)); 
+    gap: 2px; 
+    padding: 5px; 
+  }
+  .disabled {
+    display: none;
+  }
+  .cell {
+    height:50px;
+    width: 50px;
+    border: 3px solid var(--color-lblue);
+    margin:3px;
+    background-color: var(--color-dblue);
+    border-radius: 10px;
+    color : #f0f9ee;
     font-weight: bold;
-    height: 50px;
+    font-size: 35px;
+    display: flex;
+    justify-content : center;
+    align-items : center;
+    text-align: center;
+  
   }
 
-  .mined {
-    background-color: red;
+  .boom {
+    background-image: url('image/bombe.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; 
   }
+  
+  .flag {
+    background-image: url('image/flag.png');
+    background-repeat: no-repeat;
+    background-size: cover; 
+  }
+  
+ .cell:hover {
+  background-color: var(--color-lblue);
+  cursor: pointer;
+ }
 
-  .invisible {
-    visibility: hidden;
-  }
+ .boum {
+  background-image: url('image/bombe.png');
+  background-repeat: no-repeat;
+  background-size: 60px 60px;
+ }
