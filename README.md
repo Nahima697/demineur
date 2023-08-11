@@ -35,3 +35,10 @@ Ici je dois gérer les intéractions avec l'utilisateur. Lorsqu'il clique sur un
 
 ### l'Explosions des cases avec aucune mines adjacentes.
 Dans la règle du démineur quand on clique sur une case 0, les autres cases zéro sont découvertes. Il faut donc gérer cela.
+
+## Interactions 2
+J'ai réussi à terminer les interactions click avec le joueur, en prenant en compte le click droit et le click gauche. Le droit permet de mettre un drapeau sur les case où l'on suspecte la présence d'une mine.
+Je merges cette branche, je me laisse pour la suite le problème de résoudre des erreurs qui arrivent lorsque l'on click entre les cases.
+
+# Nouvelle branche Game
+Je vais créer une branche afin de ranger tout ça. Je penses créer une classe Game, une classe API, et peut être une classe Player.
