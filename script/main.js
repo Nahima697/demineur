@@ -30,7 +30,4 @@ form.addEventListener('submit', async (e) => {
   game.appendChild(gridElement);
   const cell = e.target;
 
-  
- 
-
 });
