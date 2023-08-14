@@ -30,4 +30,4 @@ function cellClicked(e, newData) {
     }
   }
 
-  export { cellClicked};
+  export { cellClicked };

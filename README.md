@@ -40,5 +40,12 @@ Dans la règle du démineur quand on clique sur une case 0, les autres cases zé
 J'ai réussi à terminer les interactions click avec le joueur, en prenant en compte le click droit et le click gauche. Le droit permet de mettre un drapeau sur les case où l'on suspecte la présence d'une mine.
 Je merges cette branche, je me laisse pour la suite le problème de résoudre des erreurs qui arrivent lorsque l'on click entre les cases.
 
-# Nouvelle branche Game
+## Nouvelle branche Game
 Je vais créer une branche afin de ranger tout ça. Je penses créer une classe Game, une classe API, et peut être une classe Player.
+
+### Edit
+
+Du coup j'ai réorganisé tout mon code en module avec une classe Api. Je vais peut etre modifier mon main en classe Game, ou faire une classe Game à part pour gérer le nombre de partie. Je ne penses pas avoir le temps de faire une classe Player. Ce fut très difficile pour moi de reprendre en module un code existant notamment à cause de la portée des variables et de comment bien importer tout cela. La prochaine fois, je réfléchirait à ça avant de coder plutôt que de me préoccuper de l'algo. Je reste donc sur la même branche j'aurai du l'appeler module au lieu de Game.
+
+## Le vrai Game
+Je vais donc maintenant gérer la fin de partie du coup quand le joueur tombe sur une mine ou que toute les cases non minés sont clické. Il faut que je penses partir sur une classe Game
