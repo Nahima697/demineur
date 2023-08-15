@@ -1,4 +1,4 @@
-# demineur
+# Démineur
 Un jeu de démineur en JS avec une API
 ## Convention de code
 Je compte faire des efforts en terme de respects des normes de code. Je compte utiliser dans un premier temps le use strict. Ensuite j'écrirai le noms des variables en français et j'utliserai le camelCase. Enfin, je vais essayer de commenter mon code afin de retranscrire ma logique.
@@ -49,3 +49,7 @@ Du coup j'ai réorganisé tout mon code en module avec une classe Api. Je vais p
 
 ## Le vrai Game
 Je vais donc maintenant gérer la fin de partie du coup quand le joueur tombe sur une mine ou que toute les cases non minés sont clické. Il faut que je penses partir sur une classe Game
+
+J'ai pu gérer la fin de la partie en ajoutant des méthodes à la classe Game, afin de controler si le joueur à cliqué sur une mine ou si toute les cases ont été révélé.
+
+J'a essayé de faire un bouton restart en fin de partie, je n'y suis pas arrivé.

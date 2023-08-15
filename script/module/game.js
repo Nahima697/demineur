@@ -9,6 +9,7 @@ class Game {
   }
   
   async startGame(cols, rows, mines, pseudo) {
+  
     const data = await Api.getData(cols, rows, mines);
     const newData = adjoiningMines(rows, cols, data);
     const gridElement = generateGrid(rows, cols, newData);
@@ -56,10 +57,33 @@ class Game {
     this.gameOver = true;
 
     if (isWin) {
-      alert('Vous avez gagné !');
+      this.displayMessage("VOUS AVEZ GAGNEZ");
     } else {
-      alert('Vous avez perdu !');
+      this.displayMessage("VOUS AVEZ PERDU");
     }
+    this.displayRestartButton();
+  }
+  
+  displayMessage(message) {
+    const gameContainer = document.querySelector('.game');
+    gameContainer.innerHTML = "";
+    const messageElement = document.createElement('p');
+    messageElement.innerText = message;
+    gameContainer.appendChild(messageElement);
+  }
+
+  displayRestartButton() {
+    const restartButton = document.createElement('button');
+    restartButton.innerText = 'Restart';
+    restartButton.classList.add('restart');
+    restartButton.setAttribute('id', 'restart-button');
+    const gameContainer = document.querySelector('.game');
+    gameContainer.appendChild(restartButton);
+
+    restartButton.addEventListener('click', () => {
+      restartButton.remove();
+      this.startGame(this.cols, this.rows, this.mines, this.pseudo);
+    });
   }
 }
 
