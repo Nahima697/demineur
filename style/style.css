@@ -21,6 +21,7 @@ body {
   }
   .container {
     display: flex;
+    flex-wrap:nowrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -53,14 +54,14 @@ body {
   }
 
   .boom {
-    background-image: url('image/bombe.png');
+    background-image: url('../image/bombe.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center; 
   }
   
   .flag {
-    background-image: url('image/flag.png');
+    background-image: url('../image/flag.png');
     background-repeat: no-repeat;
     background-size: cover; 
   }

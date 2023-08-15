@@ -7,12 +7,12 @@ function hasnoMines(newData, row, col) {
   }
 
   const cell = document.querySelector(`.cell-row-${row}-col-${col}`);
-  console.log(cell);
   const value = newData[row][col].value;
-  console.log(value);
 
   if (value === 0) {
-    newData[row][col].noMined = true; 
+    newData[row][col].noMined = true;
+    newData[row][col].revealed = true;
+    
     for (let x = -1; x <= 1; x++) {
       for (let y = -1; y <= 1; y++) {
         const newRow = row + x; 
