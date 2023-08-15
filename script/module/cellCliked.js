@@ -24,7 +24,7 @@ function cellClicked(e, newData,game) {
       cell.classList.add('boom');
     } else if (cellValue === '0') {
       hasnoMines(newData, row, col);
-      game.checkGameStatus(newData);
+      game.checkGameStatus(e,newData);
     }
   }
 }

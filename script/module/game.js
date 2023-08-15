@@ -35,7 +35,7 @@ class Game {
     const gameContainer = document.querySelector('.game');
     gameContainer.appendChild(gridElement);
     document.querySelector('.choiceGame').classList.add('disabled');
-    document.querySelector('.welcomePseudo').textContent = "A toi de jouer " + this.pseudo;
+  
     document.querySelector('.game').classList.remove('disabled');
     gridElement.addEventListener('click', (e) => this.handleCellClick(e, newData,this));
     gridElement.addEventListener('contextmenu', (e) => this.handleCellClick(e,newData,this));
@@ -43,20 +43,21 @@ class Game {
 
   handleCellClick(e, newData,game) {
     cellClicked(e, newData,game);
-    this.checkGameStatus(newData);
+    this.checkGameStatus(e,newData);
   }
   
-  checkGameStatus(newData) {
+  checkGameStatus(e,newData) {
     if (this.gameOver) {
       return;
     }
-  
+    let cell = e.target;
     let isWin = true;
     for (const row of newData) {
-      for (const cell of row) {
-        console.log(cell);
-        if (cell.isMined && cell.revealed == true) {
+      for (cell of row) {
+       console.log(cell);
+        if (cell.isMined === true && cell.revealed === true) {
           isWin = false;
+          this.endGame(false);
           break;
         }
         if (!cell.isMined && !cell.revealed) {
@@ -79,7 +80,7 @@ class Game {
   
     if (isWin) {
       this.displayMessage("VOUS AVEZ GAGNÉ");
-    } else {
+    } if( this.endGame(false)) {
       this.displayMessage("VOUS AVEZ PERDU");
     }
     this.displayRestartButton();
@@ -108,11 +109,11 @@ class Game {
 
   restart() {
     const gameContainer = document.querySelector('.game');
+    gameContainer.innerHTML="";
     document.querySelector('.choiceGame').classList.remove('disabled');
     this.gameOver = false;
   }
   
-
 }
 
 export { Game };

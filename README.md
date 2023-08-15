@@ -52,4 +52,10 @@ Je vais donc maintenant gérer la fin de partie du coup quand le joueur tombe su
 
 J'ai pu gérer la fin de la partie en ajoutant des méthodes à la classe Game, afin de controler si le joueur à cliqué sur une mine ou si toute les cases ont été révélé.
 
-J'a essayé de faire un bouton restart en fin de partie, je n'y suis pas arrivé.
+# Conclusion
+
+J'ai essayé de faire un bouton restart en fin de partie, je n'y suis pas arrivé.
+Je ne suis pas parvenu à gérer la fin de partie, je n'arrives pas à savoir pourquoi. Quand je clique sur une mine cela met isMined false. Quand j'essaye de faire un cell.classList.contains('boom'), cela me met cell.classList undefined. La mise en place de classe et de module complique grandement la tache, je n'ai pas encore le niveau pour savoir gérer tout cela ( la portée des variables et des méthodes de class).
+De même, la méthode restart ne fonctionne pas, j'arrives a regénérer le formulaire qui regénère la bonne taille de grille, mais je n'ai pas su réinjecter le nouveau tableau de date.
+
+Je penses que vu le temps imparti j'ai fais ce que j'ai pu, mais même si cela s'avère etre un échec.
