@@ -1,8 +1,9 @@
 "use strict";
-
+//fonction qui controle les cases adjacentes au case minées
 function adjoiningMines(rows, cols,data) {
-    let newData = JSON.parse(JSON.stringify(data));
-   
+    let newData = JSON.parse(JSON.stringify(data)); //créer une copie de data
+
+   // je parcours le tableau de data
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < cols; j++) {
         newData[i][j] = {
@@ -38,4 +39,4 @@ function adjoiningMines(rows, cols,data) {
     return newData;
   }
 
-  export { adjoiningMines};
+  export { adjoiningMines}; // j'exporte ma fonction

@@ -1,5 +1,5 @@
 import { hasnoMines } from "./hasnoMines.js";
-
+// fonction qui gère les interactions au clik
 function cellClicked(e, newData) {
   let cell = e.target;
   

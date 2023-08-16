@@ -1,5 +1,5 @@
 "use strict";
-
+//fonction qui génère la grille
 function generateGrid(rows, cols,newData) {
     let gridElement = document.createElement("div");
     gridElement.classList.add("grid");

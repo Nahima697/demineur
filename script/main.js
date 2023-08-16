@@ -1,5 +1,5 @@
 import { Game } from "./module/game.js";
-
+// fonction principal qui récupère les données du formulaire et instancie le new Game
 function getDatafromForm(cols, rows, mines, pseudo) {
   const form = document.querySelector('form');
   form.addEventListener('submit', async (e) => {
@@ -11,17 +11,9 @@ function getDatafromForm(cols, rows, mines, pseudo) {
 
     const game = new Game();
     await game.startGame(cols, rows, mines, pseudo);
-
-    // if (game.gameOver) {
-    //   game.displayRestartButton();
-    //   getDatafromForm(cols, rows, mines, pseudo);
-    //   handleCellClick(e, newData); 
-    //   const newGame = new Game(); 
-    //   await newGame.startGame(cols, rows, mines, pseudo);
-    // }
   });
 }
 
-getDatafromForm();
+getDatafromForm(); // j'appelle la fonction
 
-export {getDatafromForm};
+

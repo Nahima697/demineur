@@ -53,7 +53,24 @@ Je vais donc maintenant gérer la fin de partie du coup quand le joueur tombe su
 J'ai pu gérer la fin de la partie en ajoutant des méthodes à la classe Game, afin de controler si le joueur à cliqué sur une mine ou si toute les cases ont été révélé.
 
 # Conclusion
+Je suis parvenu à réaliser un démineur qui fonctionne. J'ai créer différents modules avec des fonctions qui gèrent une partie du jeu. De plus, j'ai créer deux classes qui gère l'appel à l'API et le jeu.
+### module adjoingMines
+### class Api
 
-J'ai essayé de faire un bouton restart en fin de partie, je n'y suis pas arrivé.
-La mise en place de classe et de module complique grandement la tache, je n'ai pas encore le niveau pour savoir gérer tout cela ( la portée des variables et des méthodes de class). 
-De même, la méthode restart ne fonctionne pas, j'arrives a regénérer le formulaire qui regénère la bonne taille de grille, mais je n'ai pas su réinjecter le nouveau tableau de data.
+### module grid
+
+### module hasnoMines
+
+### module cellCliked
+
+### class Game
+
+### fichier principal main
+
+### Mes plus grosses difficultés.
+
+###l'ALGO
+Les datas ayant des cases qui sont égales à 1, ce fut difficile de créer une fonctions pour les mines adjacentes.
+
+### Le partage en module/classe/fonctions
+Très difficile pour moi, à savoir comment découper et appeler les fonctions entre les différents modules. Au départ, j'avais beaucoup de doublons dans mes appels de fonctions ce qui fait que j'avais des erreurs très difficile à débeuguer. Ce fut un excellent exercice pour appréhender JS.

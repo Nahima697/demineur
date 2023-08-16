@@ -2,8 +2,8 @@ import { Api } from "./api.js";
 import { generateGrid } from "./grid.js"; 
 import { adjoiningMines } from "./adjoiningMines.js"; 
 import { cellClicked } from "./cellCliked.js"; 
-import { getDatafromForm } from "../main.js";
 
+// classe qui gère la partie
 class Game {
   constructor() {
     this.gameOver = false;
@@ -28,16 +28,27 @@ class Game {
     const newData = adjoiningMines(this.rows, this.cols, data);
     return newData;
   }
-
   displayGame(newData) {
-    const gridElement = generateGrid(this.rows, this.cols,this.newData);
+    const gridElement = generateGrid(this.rows, this.cols, this.newData);
     const gameContainer = document.querySelector('.game');
+    
+    // Créer un élément <h2> pour afficher le message de bienvenue
+    const welcome = document.createElement("h2");
+    welcome.innerText = "Welcome " + this.pseudo;
+  
+    // Ajoutez l'élément <h2> et la grille au conteneur de jeu
+    gameContainer.appendChild(welcome);
     gameContainer.appendChild(gridElement);
+  
+    // Mettre à jour les classes CSS des éléments
     document.querySelector('.choiceGame').classList.add('disabled');
     document.querySelector('.game').classList.remove('disabled');
-    gridElement.addEventListener('click', (e) => this.handleCellClick(e, newData,this));
-    gridElement.addEventListener('contextmenu', (e) => this.handleCellClick(e,newData,this));
+  
+    // Ajouter les écouteurs d'événements aux cellules de la grille
+    gridElement.addEventListener('click', (e) => this.handleCellClick(e, newData, this));
+    gridElement.addEventListener('contextmenu', (e) => this.handleCellClick(e, newData, this));
   }
+  
 
   handleCellClick(e, newData) {
     cellClicked(e, newData);
@@ -73,8 +84,7 @@ class Game {
   }
   
   endGame(isWin) {
-    this.gameOver = true; //  condition pour déclencher la fin de partie, et surtout déclencher le restart.
-  
+    this.gameOver = true;
     if (isWin) {
       this.displayMessage("VOUS AVEZ GAGNÉ");
     } else {
@@ -108,7 +118,6 @@ class Game {
   restart() {
     const gameContainer = document.querySelector('.game');
     gameContainer.innerHTML="";
-    getDatafromForm(cols, rows, mines, pseudo);
     document.querySelector('.choiceGame').classList.remove('disabled');
     this.gameOver = false;
   }
