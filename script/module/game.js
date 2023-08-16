@@ -25,7 +25,6 @@ class Game {
   async setupGameGrid() {
     const data = await Api.getData(this.cols, this.rows, this.mines);
     const newData = adjoiningMines(this.rows, this.cols, data);
-    console.table(newData);
     return newData;
   }
 
@@ -34,7 +33,6 @@ class Game {
     const gameContainer = document.querySelector('.game');
     gameContainer.appendChild(gridElement);
     document.querySelector('.choiceGame').classList.add('disabled');
-  
     document.querySelector('.game').classList.remove('disabled');
     gridElement.addEventListener('click', (e) => this.handleCellClick(e, newData,this));
     gridElement.addEventListener('contextmenu', (e) => this.handleCellClick(e,newData,this));
@@ -42,19 +40,24 @@ class Game {
 
   handleCellClick(e, newData) {
     cellClicked(e, newData);
+    console.table(newData);
     this.checkGameStatus(newData);
+    console.table(newData);
   }
   
   checkGameStatus(newData) {
     if (this.gameOver) {
       return;
     }
-  console.table(newData);
+    
+    console.table(newData);
+    
     let isWin = true;
     for (let i = 0; i < newData.length; i++) {
       for (let j = 0; j < newData[i].length; j++) {
         const cell = newData[i][j];
-        console.log(newData[i][j]);
+        console.log(`Checking cell at (${i}, ${j}): isMined=${cell.isMined}, revealed=${cell.revealed}`);
+        
         if (cell.isMined && cell.revealed === true) {
           isWin = false;
           break;

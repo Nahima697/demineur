@@ -7,7 +7,8 @@ function adjoiningMines(rows, cols,data) {
       for (let j = 0; j < cols; j++) {
         newData[i][j] = {
           value: data[i][j],
-          isMined: false
+          isMined: false,
+          revealed: false,
         };//ici je défini les attributs de newData, la value avant incrémentation et isMined par défaut à false
   
         if (data[i][j] === 1) {
@@ -34,7 +35,6 @@ function adjoiningMines(rows, cols,data) {
         }
       }
     }
-    console.table(newData);
     return newData;
   }
 

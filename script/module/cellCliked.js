@@ -7,7 +7,9 @@ function cellClicked(e, newData) {
   const col = parseInt(cell.dataset.col);
   const cellValue = cell.dataset.value;
   const isMined = newData[row][col].isMined;
-  console.log(newData[row][col]);
+  console.table(newData);
+  console.log(row,col);
+ 
   if (e.button === 2) { // Clic droit
     e.preventDefault();
     if (!cell.classList.contains('flag')) {
@@ -23,6 +25,7 @@ function cellClicked(e, newData) {
       cell.classList.add('boom');
     } else if (cellValue === '0') {
       hasnoMines(newData, row, col);
+      console.table(newData);
     }
   }
 }
