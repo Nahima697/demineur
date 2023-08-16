@@ -69,7 +69,7 @@ Je suis parvenu à réaliser un démineur qui fonctionne. J'ai créer différent
 
 ### Mes plus grosses difficultés.
 
-###l'ALGO
+### l'ALGO
 Les datas ayant des cases qui sont égales à 1, ce fut difficile de créer une fonctions pour les mines adjacentes.
 
 ### Le partage en module/classe/fonctions
