@@ -31,6 +31,7 @@ class Game {
   displayGame(newData) {
     const gridElement = generateGrid(this.rows, this.cols,this.newData);
     const gameContainer = document.querySelector('.game');
+    document.querySelector('.welcomePseudo').innerHTML="Welcome " + this.pseudo;
     gameContainer.appendChild(gridElement);
     document.querySelector('.choiceGame').classList.add('disabled');
     document.querySelector('.game').classList.remove('disabled');
@@ -50,34 +51,26 @@ class Game {
       return;
     }
     
-    console.table(newData);
-    
     let isWin = true;
+    let isLost = false;
     for (let i = 0; i < newData.length; i++) {
       for (let j = 0; j < newData[i].length; j++) {
         const cell = newData[i][j];
-        console.log(`Checking cell at (${i}, ${j}): isMined=${cell.isMined}, revealed=${cell.revealed}`);
-        
-        if (cell.isMined && cell.revealed === true) {
-          isWin = false;
+        if (cell.isMined && cell.revealed) {
+          isLost = true;
           break;
-        }
-        if (!cell.isMined && !cell.revealed) {
+        }else if(!cell.revealed && !cell.isMined){
           isWin = false;
-          break;
         }
-      }
-      if (!isWin) {
-        break;
       }
     }
   
     if (isWin) {
       this.endGame(true);
+    }else if(isLost){
+      this.endGame(false);
     }
   }
-  
-  
   
   endGame(isWin) {
     this.gameOver = true;
