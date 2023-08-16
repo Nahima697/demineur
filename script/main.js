@@ -12,14 +12,16 @@ function getDatafromForm(cols, rows, mines, pseudo) {
     const game = new Game();
     await game.startGame(cols, rows, mines, pseudo);
 
-    if (game.gameOver) {
-      game.displayRestartButton();
-      getDatafromForm(cols, rows, mines, pseudo);
-      handleCellClick(e, newData); 
-      const newGame = new Game(); 
-      await newGame.startGame(cols, rows, mines, pseudo);
-    }
+    // if (game.gameOver) {
+    //   game.displayRestartButton();
+    //   getDatafromForm(cols, rows, mines, pseudo);
+    //   handleCellClick(e, newData); 
+    //   const newGame = new Game(); 
+    //   await newGame.startGame(cols, rows, mines, pseudo);
+    // }
   });
 }
 
 getDatafromForm();
+
+export {getDatafromForm};

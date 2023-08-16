@@ -2,6 +2,7 @@ import { Api } from "./api.js";
 import { generateGrid } from "./grid.js"; 
 import { adjoiningMines } from "./adjoiningMines.js"; 
 import { cellClicked } from "./cellCliked.js"; 
+import { getDatafromForm } from "../main.js";
 
 class Game {
   constructor() {
@@ -31,7 +32,6 @@ class Game {
   displayGame(newData) {
     const gridElement = generateGrid(this.rows, this.cols,this.newData);
     const gameContainer = document.querySelector('.game');
-    document.querySelector('.welcomePseudo').innerHTML="Welcome " + this.pseudo;
     gameContainer.appendChild(gridElement);
     document.querySelector('.choiceGame').classList.add('disabled');
     document.querySelector('.game').classList.remove('disabled');
@@ -73,7 +73,7 @@ class Game {
   }
   
   endGame(isWin) {
-    this.gameOver = true;
+    this.gameOver = true; //  condition pour déclencher la fin de partie, et surtout déclencher le restart.
   
     if (isWin) {
       this.displayMessage("VOUS AVEZ GAGNÉ");
@@ -108,6 +108,7 @@ class Game {
   restart() {
     const gameContainer = document.querySelector('.game');
     gameContainer.innerHTML="";
+    getDatafromForm(cols, rows, mines, pseudo);
     document.querySelector('.choiceGame').classList.remove('disabled');
     this.gameOver = false;
   }
