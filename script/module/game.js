@@ -18,7 +18,6 @@ class Game {
     this.rows = rows;
     this.mines = mines;
     this.pseudo = pseudo;
-
     this.newData = await this.setupGameGrid();
     this.displayGame(this.newData);
   }
@@ -26,12 +25,12 @@ class Game {
   async setupGameGrid() {
     const data = await Api.getData(this.cols, this.rows, this.mines);
     const newData = adjoiningMines(this.rows, this.cols, data);
-    console.log(newData);
+    console.table(newData);
     return newData;
   }
 
   displayGame(newData) {
-    const gridElement = generateGrid(this.rows, this.cols, this.newData);
+    const gridElement = generateGrid(this.rows, this.cols,this.newData);
     const gameContainer = document.querySelector('.game');
     gameContainer.appendChild(gridElement);
     document.querySelector('.choiceGame').classList.add('disabled');
@@ -41,23 +40,23 @@ class Game {
     gridElement.addEventListener('contextmenu', (e) => this.handleCellClick(e,newData,this));
   }
 
-  handleCellClick(e, newData,game) {
-    cellClicked(e, newData,game);
-    this.checkGameStatus(e,newData);
+  handleCellClick(e, newData) {
+    cellClicked(e, newData);
+    this.checkGameStatus(newData);
   }
   
-  checkGameStatus(e,newData) {
+  checkGameStatus(newData) {
     if (this.gameOver) {
       return;
     }
-    let cell = e.target;
+  console.table(newData);
     let isWin = true;
-    for (const row of newData) {
-      for (cell of row) {
-       console.log(cell);
-        if (cell.isMined === true && cell.revealed === true) {
+    for (let i = 0; i < newData.length; i++) {
+      for (let j = 0; j < newData[i].length; j++) {
+        const cell = newData[i][j];
+        console.log(newData[i][j]);
+        if (cell.isMined && cell.revealed === true) {
           isWin = false;
-          this.endGame(false);
           break;
         }
         if (!cell.isMined && !cell.revealed) {
@@ -75,16 +74,19 @@ class Game {
     }
   }
   
+  
+  
   endGame(isWin) {
     this.gameOver = true;
   
     if (isWin) {
       this.displayMessage("VOUS AVEZ GAGNÉ");
-    } if( this.endGame(false)) {
+    } else {
       this.displayMessage("VOUS AVEZ PERDU");
     }
     this.displayRestartButton();
   }
+  
   
   
   displayMessage(message) {
